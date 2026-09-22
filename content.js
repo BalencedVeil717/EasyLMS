@@ -213,9 +213,11 @@
   }
 
   function suggestFilename(viewButton) {
-    const row = viewButton.closest("li, tr, [class*='item']");
-    const text = (row?.textContent || "").replace(BUTTON_LABEL, "").trim() ||
-      "document";
+    const panel = viewButton.closest("nz-collapse-panel");
+    const titleElement = panel?.querySelector("h6");
+    const text = (titleElement?.textContent || "document")
+      .replace(/^\s*\d+\.\s*/, "")
+      .trim();
     const safeText = text.replace(/[<>:"/\\|?*\x00-\x1F]/g, " ")
       .replace(/\s+/g, " ")
       .trim()
