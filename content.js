@@ -12,6 +12,8 @@
 
   const BUTTON_LABEL = "Click to View";
   const PROCESSED_ATTRIBUTE = "data-EasyLMS-processed";
+  const PPT_URL_PATTERN =
+    /\.(pptx?|ppsx?|potx?|odp)(?:[?#]|$)|[?&](?:filetype|type|format)=pptx?(?:[&#]|$)|[?&](?:file|url|src|path)=[^&#]*\.(?:pptx?|ppsx?|potx?|odp)(?:[&#]|$)/i;
   let activeRequest = null;
   let extractionTimer = null;
   let framesBeforeClick = new Map();
@@ -32,10 +34,14 @@
       return;
     }
 
+    const filename = `${activeRequest.filenameBase}${
+      PPT_URL_PATTERN.test(url) ? ".pptx" : ".pdf"
+    }`;
+
     chrome.runtime.sendMessage({
       type: "EasyLMS_DOWNLOAD",
       url,
-      filename: activeRequest.filename
+      filename
     }).catch((error) => {
       console.error("EasyLMS: download request failed", error);
     });
@@ -87,8 +93,8 @@
     const downloadButton = document.createElement("button");
     downloadButton.type = "button";
     downloadButton.className = "EasyLMS-download-button";
-    downloadButton.textContent = "Download PDF";
-    downloadButton.title = "PDF downloader template";
+    downloadButton.textContent = "Download";
+    downloadButton.title = "Download document";
 
     downloadButton.addEventListener("click", () => {
       const nativeButton = findClickableButton(viewButton);
@@ -107,7 +113,7 @@
       );
       activeRequest = {
         requestId: crypto.randomUUID(),
-        filename: suggestFilename(viewButton)
+        filenameBase: suggestFilename(viewButton)
       };
 
       nativeButton.dispatchEvent(
@@ -223,7 +229,7 @@
       .trim()
       .slice(0, 120);
     const date = new Date().toISOString().slice(0, 10);
-    return `${safeText || "document"} - ${date}.pdf`;
+    return `${safeText || "document"} - ${date}`;
   }
 
   function scan() {
