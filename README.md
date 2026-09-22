@@ -5,26 +5,25 @@ EasyLMS adds a **Download** button beside "Click to View" button in PDF note lis
 ## Requirements
 
 - Google Chrome or another Chromium-based browser
-- An active account on the supported student portal
+- An active account on PULMS
 
 ## Installation in Chrome
 
 1. Download the latest `EasyLMS-*.zip` release.
-2. Extract the ZIP to a permanent folder.
+2. Extract the ZIP to a folder.
 3. Open `chrome://extensions` in Chrome.
 4. Enable **Developer mode**.
 5. Click **Load unpacked**.
-6. Select the extracted folder containing `manifest.json`.
-7. Open or reload the student portal.
+6. Select the extracted folder.
+7. Open or reload PULMS.
 
-The extension should now add a **Download** button beside each `Click to View`
-PDF control.
+The extension should now add a **Download** button below each `Click to View` PDF control.
 
 ## Usage
 
-1. Sign in to the student portal.
-2. Navigate to a page with PDF notes.
-3. Click **Download** beside the PDF you want.
+1. Sign in to PULMS.
+2. Navigate to subject page with PDF files.
+3. Click **Download** for the PDF you want.
 4. The PDF will be downloaded to your default/selected download location.
 
 ## Updating
