@@ -222,7 +222,8 @@
       .replace(/\s+/g, " ")
       .trim()
       .slice(0, 120);
-    return `${safeText || "document"}.pdf`;
+    const date = new Date().toISOString().slice(0, 10);
+    return `${safeText || "document"} - ${date}.pdf`;
   }
 
   function scan() {
