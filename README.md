@@ -9,7 +9,7 @@ EasyLMS adds a **Download** button beside "Click to View" button in PDF note lis
 
 ## Installation in Chrome
 
-1. Download the latest `EasyLMS-*.zip` release.
+1. Download the latest `EasyLMS.zip` release.
 2. Extract the ZIP to a folder.
 3. Open `chrome://extensions` in Chrome.
 4. Enable **Developer mode**.
