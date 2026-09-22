@@ -1,0 +1,14 @@
+.EasyLMS-download-button {
+  margin-left: 8px;
+  padding: 6px 10px;
+  border: 1px solid #4d1556;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #4d1556;
+  cursor: pointer;
+  font: inherit;
+}
+
+.EasyLMS-download-button:hover {
+  background: #f4edf6;
+}

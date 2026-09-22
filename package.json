@@ -1,0 +1,8 @@
+{
+  "name": "easylms",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@types/chrome": "^0.1.0"
+  }
+}

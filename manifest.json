@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "EasyLMS",
+  "version": "0.1.0",
+  "description": "Basic extension for adding PDF actions to the student portal.",
+  "permissions": [
+    "downloads",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://elearning.paruluniversity.ac.in/*",
+    "https://api.paruluniversity.ac.in/*",
+    "https://edorer-parul-elearning.sgp1.digitaloceanspaces.com/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "easylms@example.com",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://elearning.paruluniversity.ac.in/*",
+        "https://api.paruluniversity.ac.in/*",
+        "https://edorer-parul-elearning.sgp1.digitaloceanspaces.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}
